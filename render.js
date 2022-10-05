@@ -128,20 +128,40 @@ const renderTags = (role, level, languages, tools) => {
   const tagsElement = document.createElement("div");
   tagsElement.classList.add("tags");
 
-  const testElement = document.createElement("ul");
-  const liElement = document.createElement("li");
-  liElement.classList.add("click-check");
-  liElement.innerText = role;
+  //---Role element---
+  const roleElement = document.createElement("button");
+  roleElement.classList.add("tag-element");
+  roleElement.classList.add("click-event");
+  roleElement.setAttribute("button-type", "role");
+  roleElement.innerText = role;
+  tagsElement.appendChild(roleElement);
 
-  testElement.appendChild(liElement);
+  //---Level Element
+  const levelElement = document.createElement("button");
+  levelElement.classList.add("tag-element");
+  levelElement.classList.add("click-event");
+  levelElement.setAttribute("button-type", "level");
+  levelElement.innerText = level;
+  tagsElement.appendChild(levelElement);
 
+  //--languags Element
   languages.forEach((element) => {
-    const elementToAdd = document.createElement("li");
-    elementToAdd.innerText = element;
-    testElement.appendChild(elementToAdd);
+    const languageElement = document.createElement("button");
+    languageElement.classList.add("tag-element");
+    languageElement.classList.add("click-event");
+    languageElement.setAttribute("button-type", "language");
+    languageElement.innerText = element;
+    tagsElement.appendChild(languageElement);
   });
-  console.log(level);
-  console.log(tools);
-  tagsElement.appendChild(testElement);
+
+  //---tools element
+  tools.forEach((element) => {
+    const toolsElement = document.createElement("button");
+    toolsElement.classList.add("tag-element");
+    toolsElement.classList.add("click-event");
+    toolsElement.setAttribute("button-type", "tools");
+    toolsElement.innerText = element;
+    tagsElement.appendChild(toolsElement);
+  });
   return tagsElement;
 };
