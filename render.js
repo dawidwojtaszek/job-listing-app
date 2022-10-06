@@ -9,7 +9,6 @@ export const renderList = (list) => {
 };
 
 const renderComponent = ({
-  id,
   company,
   logo,
   isNew,
@@ -164,4 +163,58 @@ const renderTags = (role, level, languages, tools) => {
     tagsElement.appendChild(toolsElement);
   });
   return tagsElement;
+};
+
+export const renderFilterTab = (currentFilters) => {
+  const tabElement = document.querySelector("#filter-tab");
+  if (
+    currentFilters.role === null &&
+    currentFilters.level === null &&
+    currentFilters.languages.lenght === 0 &&
+    currentFilters.tools.lenght === 0
+  ) {
+    console.log("empty tags");
+    tabElement.classList.add("hide");
+    // hide tab
+  } else {
+    tabElement.innerHTML = "";
+    const filtersBoxElement = document.createElement("div");
+    filtersBoxElement.classList.add("filters-box");
+    const clearFilterElement = document.createElement("button");
+    clearFilterElement.classList.add("clear-btn");
+    clearFilterElement.innerText = "Clear";
+    tabElement.appendChild(filtersBoxElement);
+    tabElement.appendChild(clearFilterElement);
+
+    if (currentFilters.role !== null) {
+      filtersBoxElement.appendChild(renderFilterElement(currentFilters.role));
+    }
+    if (currentFilters.level !== null) {
+      filtersBoxElement.appendChild(renderFilterElement(currentFilters.level));
+    }
+    if (currentFilters.languages.lenght !== 0) {
+      currentFilters.languages.forEach((element) => {
+        filtersBoxElement.appendChild(renderFilterElement(element));
+      });
+    }
+    if (currentFilters.tools.lenght !== 0) {
+      currentFilters.tools.forEach((element) => {
+        filtersBoxElement.appendChild(renderFilterElement(element));
+      });
+    }
+  }
+};
+
+const renderFilterElement = (filterName) => {
+  const filterElement = document.createElement("div");
+  filterElement.classList.add("filter");
+  const nameElement = document.createElement("span");
+  nameElement.classList.add("name-filter");
+  nameElement.innerText = filterName;
+  const removeBtnElement = document.createElement("button");
+  removeBtnElement.classList.add("remove-filter-btn");
+  removeBtnElement.innerText = "X";
+  filterElement.appendChild(nameElement);
+  filterElement.appendChild(removeBtnElement);
+  return filterElement;
 };

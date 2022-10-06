@@ -1,8 +1,8 @@
 import data from "./data.json" assert { type: "json" };
-import { renderList } from "./render.js";
+import { renderList, renderFilterTab } from "./render.js";
 
 const app = () => {
-  let currentList = data.map((element) => element);
+  let currentList = data;
   let currentTags = {
     role: null,
     level: null,
@@ -19,7 +19,7 @@ const app = () => {
       const name = e.target.getAttribute("button-type");
       addFilter(name, e.target.innerText);
       renderList(currentList);
-      console.log(currentTags);
+      renderFilterTab(currentTags);
       // -> check if is clicked before
       // -> add to current tags if non exist
       // -> filter currentList and rerender
