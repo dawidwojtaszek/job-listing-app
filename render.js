@@ -149,7 +149,7 @@ const renderTags = (role, level, languages, tools) => {
     const languageElement = document.createElement("button");
     languageElement.classList.add("tag-element");
     languageElement.classList.add("click-event");
-    languageElement.setAttribute("button-type", "language");
+    languageElement.setAttribute("button-type", "languages");
     languageElement.innerText = element;
     tagsElement.appendChild(languageElement);
   });
