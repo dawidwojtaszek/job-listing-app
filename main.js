@@ -13,17 +13,14 @@ const app = () => {
   renderList(currentList);
 
   const rootElement = document.querySelector("#root");
-  console.log(currentList);
+
   rootElement.addEventListener("click", (e) => {
     if (e.target.classList.contains("click-event")) {
       const name = e.target.getAttribute("button-type");
       addFilter(name, e.target.innerText);
+      console.log(currentList);
       renderList(currentList);
       renderFilterTab(currentTags);
-      // -> check if is clicked before
-      // -> add to current tags if non exist
-      // -> filter currentList and rerender
-      // -> remove if exist
     }
     e.preventDefault();
   });
@@ -33,33 +30,82 @@ const app = () => {
       if (!currentTags[key].includes(newFilter)) {
         currentTags[key].push(newFilter);
       }
-      const newList = [];
-      currentList.forEach((element) => {
-        if (element[key].includes(newFilter)) {
-          newList.push(element);
-        }
-      });
-      currentList = newList;
+      filterData(currentTags);
+      //   const newList = [];
+      //   currentList.forEach((element) => {
+      //     if (element[key].includes(newFilter)) {
+      //       newList.push(element);
+      //     }
+      //   });
+      //   currentList = newList;
     } else {
       currentTags[key] = newFilter;
-      const newList = [];
+      filterData(currentTags);
+      //   const newList = [];
+      //   currentList.forEach((element) => {
+      //     if (element[key] === newFilter) {
+      //       newList.push(element);
+      //     }
+      //   });
+      //   currentList = newList;
+    }
+  };
+
+  const filterData = (filters) => {
+    if (filters.role !== null) {
+      let tempList = [];
       currentList.forEach((element) => {
-        if (element[key] === newFilter) {
-          newList.push(element);
+        if (element.role === filters.role) {
+          tempList.push(element);
+
+          currentList = tempList;
+          console.log(currentList);
+          console.log(filters);
         }
       });
-      currentList = newList;
     }
-  };
-  const removeFilter = (key, filterToRemove) => {
-    if (key === "languages" || key === "tools") {
-      currentTags[key] = [];
-    } else {
-      currentTags[key] = currentTags[key].filter((element) => {
-        element != filterToRemove;
+    if (filters.level !== null) {
+      let tempList = [];
+      currentList.forEach((element) => {
+        if (element.level === filters.level) {
+          tempList.push(element);
+          currentList = tempList;
+          console.log(currentList);
+        }
+      });
+    }
+    if (filters.languages.length !== 0) {
+      let tempList = [];
+      filters.languages.forEach((lang) => {
+        tempList = [];
+        currentList.forEach((element) => {
+          if (element.languages.includes(lang)) {
+            tempList.push(element);
+          }
+          currentList = tempList;
+        });
+      });
+    }
+    if (filters.tools.length !== 0) {
+      let tempList = [];
+      filters.tools.forEach((tool) => {
+        tempList = [];
+        currentList.forEach((element) => {
+          if (element.tools.includes(tool)) {
+            tempList.push(element);
+          }
+          currentList = tempList;
+        });
       });
     }
   };
+
+  const filterTab = document.querySelector("#filter-tab");
+  filterTab.addEventListener("click", (e) => {
+    if (e.target.classList.contains("remove-filter-btn")) {
+      console.log("usun to kurwa");
+    }
+  });
 };
 
 // app init
