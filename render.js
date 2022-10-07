@@ -170,14 +170,15 @@ export const renderFilterTab = (currentFilters) => {
   if (
     currentFilters.role === null &&
     currentFilters.level === null &&
-    currentFilters.languages.lenght === 0 &&
-    currentFilters.tools.lenght === 0
+    currentFilters.languages.length === 0 &&
+    currentFilters.tools.length === 0
   ) {
     console.log("empty tags");
     tabElement.classList.add("hide");
     // hide tab
   } else {
     tabElement.innerHTML = "";
+    tabElement.classList.remove("hide");
     const filtersBoxElement = document.createElement("div");
     filtersBoxElement.classList.add("filters-box");
     const clearFilterElement = document.createElement("button");
@@ -187,27 +188,34 @@ export const renderFilterTab = (currentFilters) => {
     tabElement.appendChild(clearFilterElement);
 
     if (currentFilters.role !== null) {
-      filtersBoxElement.appendChild(renderFilterElement(currentFilters.role));
+      filtersBoxElement.appendChild(
+        renderFilterElement(currentFilters.role, "role")
+      );
     }
     if (currentFilters.level !== null) {
-      filtersBoxElement.appendChild(renderFilterElement(currentFilters.level));
+      filtersBoxElement.appendChild(
+        renderFilterElement(currentFilters.level, "level")
+      );
     }
     if (currentFilters.languages.lenght !== 0) {
       currentFilters.languages.forEach((element) => {
-        filtersBoxElement.appendChild(renderFilterElement(element));
+        filtersBoxElement.appendChild(
+          renderFilterElement(element, "languages")
+        );
       });
     }
     if (currentFilters.tools.lenght !== 0) {
       currentFilters.tools.forEach((element) => {
-        filtersBoxElement.appendChild(renderFilterElement(element));
+        filtersBoxElement.appendChild(renderFilterElement(element, "tools"));
       });
     }
   }
 };
 
-const renderFilterElement = (filterName) => {
+const renderFilterElement = (filterName, key) => {
   const filterElement = document.createElement("div");
   filterElement.classList.add("filter");
+  filterElement.setAttribute("filter-type", key);
   const nameElement = document.createElement("span");
   nameElement.classList.add("name-filter");
   nameElement.innerText = filterName;

@@ -18,7 +18,6 @@ const app = () => {
     if (e.target.classList.contains("click-event")) {
       const name = e.target.getAttribute("button-type");
       addFilter(name, e.target.innerText);
-      console.log(currentList);
       renderList(currentList);
       renderFilterTab(currentTags);
     }
@@ -103,9 +102,51 @@ const app = () => {
   const filterTab = document.querySelector("#filter-tab");
   filterTab.addEventListener("click", (e) => {
     if (e.target.classList.contains("remove-filter-btn")) {
-      console.log("usun to kurwa");
+      console.log(e.target.previousElementSibling.innerText);
+      console.log(e.target.parentElement.getAttribute("filter-type"));
+
+      removeFilter(
+        e.target.previousElementSibling.innerText,
+        e.target.parentElement.getAttribute("filter-type")
+      );
+      currentList = data;
+      filterData(currentTags);
+      renderList(currentList);
+      renderFilterTab(currentTags);
+    }
+    if (e.target.classList.contains("clear-btn")) {
+      clearFilters();
     }
   });
+
+  const removeFilter = (name, type) => {
+    if (type === "role" || type === "level") {
+      currentTags[type] = null;
+    } else {
+      if (currentTags[type].length === 1) {
+        currentTags[type] = [];
+      } else {
+        let tempList = [];
+        currentTags[type].forEach((element) => {
+          if (element != name) {
+            tempList.push(element);
+          }
+        });
+        currentTags[type] = tempList;
+      }
+    }
+  };
+  const clearFilters = () => {
+    currentTags = {
+      role: null,
+      level: null,
+      languages: [],
+      tools: [],
+    };
+    currentList = data;
+    renderList(data);
+    renderFilterTab(currentTags);
+  };
 };
 
 // app init
