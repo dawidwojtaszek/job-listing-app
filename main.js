@@ -69,7 +69,6 @@ const app = () => {
         if (element.level === filters.level) {
           tempList.push(element);
           currentList = tempList;
-          console.log(currentList);
         }
       });
     }
@@ -99,7 +98,7 @@ const app = () => {
     }
   };
 
-  const filterTab = document.querySelector("#filter-tab");
+  const filterTab = document.querySelector(".filter-tab");
   filterTab.addEventListener("click", (e) => {
     if (e.target.classList.contains("remove-filter-btn")) {
       console.log(e.target.previousElementSibling.innerText);

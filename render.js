@@ -25,6 +25,9 @@ const renderComponent = ({
   //---Card element---
   const cardElement = document.createElement("div");
   cardElement.classList.add("card");
+  if (featured) {
+    cardElement.classList.add("featured");
+  }
 
   //---Logo element---
   const logoElement = document.createElement("img");
@@ -65,7 +68,7 @@ const renderInfo = (
 
   //---Company element
   const companyElement = document.createElement("span");
-  companyElement.classList.add("position");
+  companyElement.classList.add("company");
   companyElement.innerText = company;
 
   //--- append company to top element
@@ -166,7 +169,7 @@ const renderTags = (role, level, languages, tools) => {
 };
 
 export const renderFilterTab = (currentFilters) => {
-  const tabElement = document.querySelector("#filter-tab");
+  const tabElement = document.querySelector(".filter-tab");
   if (
     currentFilters.role === null &&
     currentFilters.level === null &&
@@ -221,7 +224,6 @@ const renderFilterElement = (filterName, key) => {
   nameElement.innerText = filterName;
   const removeBtnElement = document.createElement("button");
   removeBtnElement.classList.add("remove-filter-btn");
-  removeBtnElement.innerText = "X";
   filterElement.appendChild(nameElement);
   filterElement.appendChild(removeBtnElement);
   return filterElement;

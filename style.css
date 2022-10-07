@@ -1,3 +1,211 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: hsl(180, 52%, 96%) ;
+    font-family: 'League Spartan', sans-serif;
+}
+header{
+    background-color: hsl(180, 29%, 50%);
+    background-image: url('images/bg-header-desktop.svg');
+    background-size: 100% 100%;
+    height: 155px;
+}
+.container{
+    max-width: 1100px;
+    margin:auto;
+    
+}
 .hide{
-    display: none;
+    display: none !important;
+}
+#root{
+    margin-top: 75px;
+}
+.filter-tab{
+    position: relative;
+    top:-35px;
+    background-color: #fff;
+    height: 70px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 40px;
+    margin-bottom: -70px;
+
+}
+.filters-box{
+    display: flex;
+}
+.filters-box .filter{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    background-color: hsl(180, 52%, 96%);
+    border-radius: 5px;
+    margin-right: 16px ;
+}
+.filters-box .filter .name-filter{
+    padding:0 10px;
+    align-items: center;
+    color:hsl(180, 29%, 50%);
+    
+}
+.filters-box .filter .remove-filter-btn{
+    background-color:hsl(180, 29%, 50%) ;
+    background-image: url(./images/icon-remove.svg);
+    background-size: 15px 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border: none;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.filters-box .filter .remove-filter-btn:hover{
+    background-color:#212f2f ;
+}
+.clear-btn{
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration:  underline;
+    color:hsl(180, 29%, 50%);
+    cursor: pointer;
+    font-weight: 700;
+}
+.card{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #fff;
+    height: 150px;
+    padding:32px 40px;
+    border-radius: 5px;
+    box-shadow: 5px 9px 14px -2px rgba(147, 189, 189, 0.44);
+    -webkit-box-shadow: 5px 9px 14px -2px rgba(147, 189, 189, 0.44);
+    -moz-box-shadow: 5px 9px 14px -2px rgba(147, 189, 189, 0.44);
+}
+.featured{
+    border-left: solid hsl(180, 29%, 50%) 5px;
+    padding-left: 27px;
+}
+.card img {
+    width: 90px;
+    height: 90px;
+}
+.card .box{
+    width: 90%;
+    margin-left: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tags{
+    display: flex;
+    justify-content: space-between;
+}
+.tag-element{
+    border:none;
+    border-radius: 5%;
+    cursor: pointer;
+    height: 30px;
+    background-color: hsl(180, 52%, 96%);
+    color:hsl(180, 29%, 50%);
+    font-weight: 700;
+    margin-left: 16px;
+    padding:0 10px;
+}
+.tag-element:hover{
+    background-color:hsl(180, 29%, 50%) ;
+    color:#fff;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 85px;
+}
+.info .top-elements{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.info .top-elements .company{
+    font-weight: 700;
+    color:hsl(180, 29%, 50%);
+    margin-right: 20px;
+
+}
+.info .top-elements .new-tag{
+    height: 25px;
+    width: 50px;
+    background-color:hsl(180, 29%, 50%) ;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 14px;
+    text-align: center;
+   padding-top: 3px; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+}
+.info .top-elements .featured-tag{
+    background-color: #212f2f;
+    color:#fff;
+    border-radius: 20px;
+    height: 25px;
+    padding: 8px;
+    font-size: 14px;
+}
+.position {
+    color:#212f2f;
+    font-size: 22px;
+}
+.info .bottom-elements-box{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.bottom-elements-box .bottom-element{
+    color:hsl(180, 8%, 52%);
+    margin-right: 36px;
+}
+.bottom-element:nth-child(2){
+    display: flex;
+    align-items: center;
+}
+.bottom-element:nth-child(2)::before{
+    content: '';
+    position: relative;
+    display: block;
+    height: 4px;
+    width: 4px;
+    border-radius: 100%;
+    background-color: hsl(180, 8%, 52%);
+    left:-20px;
+    top:0;
+}
+.bottom-element:nth-child(2)::after{
+    content: '';
+    position: relative;
+    display: block;
+    height: 4px;
+    width: 4px;
+    border-radius: 100%;
+    background-color: hsl(180, 8%, 52%);
+    left:20px;
+    top:0;
 }
