@@ -1,4 +1,4 @@
-import data from "./data.json" assert { type: "json" };
+import { data } from "./data.js";
 import { renderList, renderFilterTab } from "./render.js";
 
 const app = () => {
