@@ -16,7 +16,7 @@ const app = () => {
 
   rootElement.addEventListener("click", (e) => {
     if (e.target.classList.contains("click-event")) {
-      const name = e.target.getAttribute("btn-type");
+      const name = e.target.getAttribute("data-btn");
       addFilter(name, e.target.innerText);
       renderList(currentList);
       renderFilterTab(currentTags);
