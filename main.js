@@ -16,7 +16,7 @@ const app = () => {
 
   rootElement.addEventListener("click", (e) => {
     if (e.target.classList.contains("click-event")) {
-      const name = e.target.getAttribute("button-type");
+      const name = e.target.getAttribute("btn-type");
       addFilter(name, e.target.innerText);
       renderList(currentList);
       renderFilterTab(currentTags);
@@ -30,23 +30,9 @@ const app = () => {
         currentTags[key].push(newFilter);
       }
       filterData(currentTags);
-      //   const newList = [];
-      //   currentList.forEach((element) => {
-      //     if (element[key].includes(newFilter)) {
-      //       newList.push(element);
-      //     }
-      //   });
-      //   currentList = newList;
     } else {
       currentTags[key] = newFilter;
       filterData(currentTags);
-      //   const newList = [];
-      //   currentList.forEach((element) => {
-      //     if (element[key] === newFilter) {
-      //       newList.push(element);
-      //     }
-      //   });
-      //   currentList = newList;
     }
   };
 

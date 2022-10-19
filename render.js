@@ -135,7 +135,7 @@ const renderTags = (role, level, languages, tools) => {
   const roleElement = document.createElement("button");
   roleElement.classList.add("tag-element");
   roleElement.classList.add("click-event");
-  roleElement.setAttribute("button-type", "role");
+  roleElement.setAttribute("btn-type", "role");
   roleElement.innerText = role;
   tagsElement.appendChild(roleElement);
 
@@ -143,7 +143,7 @@ const renderTags = (role, level, languages, tools) => {
   const levelElement = document.createElement("button");
   levelElement.classList.add("tag-element");
   levelElement.classList.add("click-event");
-  levelElement.setAttribute("button-type", "level");
+  levelElement.setAttribute("btn-type", "level");
   levelElement.innerText = level;
   tagsElement.appendChild(levelElement);
 
@@ -152,7 +152,7 @@ const renderTags = (role, level, languages, tools) => {
     const languageElement = document.createElement("button");
     languageElement.classList.add("tag-element");
     languageElement.classList.add("click-event");
-    languageElement.setAttribute("button-type", "languages");
+    languageElement.setAttribute("btn-type", "languages");
     languageElement.innerText = element;
     tagsElement.appendChild(languageElement);
   });
@@ -162,7 +162,7 @@ const renderTags = (role, level, languages, tools) => {
     const toolsElement = document.createElement("button");
     toolsElement.classList.add("tag-element");
     toolsElement.classList.add("click-event");
-    toolsElement.setAttribute("button-type", "tools");
+    toolsElement.setAttribute("btn-type", "tools");
     toolsElement.innerText = element;
     tagsElement.appendChild(toolsElement);
   });
