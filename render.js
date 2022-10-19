@@ -32,6 +32,7 @@ const renderComponent = ({
   //---Logo element---
   const logoElement = document.createElement("img");
   logoElement.classList.add("logo");
+  logoElement.alt = `${company}-logo`;
   logoElement.src = logo;
 
   //---Box Element---
